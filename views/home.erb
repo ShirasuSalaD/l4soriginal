@@ -1,0 +1,23 @@
+<section>
+  <div class="container">
+    <h2><%=current_user.name%>の投稿</h2>
+      <div class="flexcontainer">
+        <% @user_comments.each do |comment|%>
+          <div class="flexitem">
+            <img src="<%= comment["artwork_url"] %>"><br><br>
+            <p><%= comment["artist_name"] %></p>
+            <p><%= comment["collection_name"] %></p>
+            <p><%= comment["track_name"] %></p>
+            <p><a href="<%= comment["preview_url"] %>">サンプル</a></p>
+            <p>コメント：<%= comment["comment"]%></p>
+            <form action="/comments/<%= comment.id %>/edit" method="get">
+							<button class="btn btn-link" type="submit">編集</button>
+						</form>
+            <form action="/comments/<%= comment.id %>/delete" method="post">
+							<button class="btn btn-link" type="submit">削除</button>
+						</form>
+          </div>
+        <%end%>
+      </div>
+  </div>
+</section>
