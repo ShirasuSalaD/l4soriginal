@@ -20,102 +20,83 @@
     </div>
   </div>
   <%# トップページで検索 %>
-  <%# <div class="topJumbotron__container">
-    <div class="topJumbotron__logo">
-      <img class="topJumbotron__logoImage" src="/animal_arupaka.png">
-    </div>
-    <div class="topJumbotron__search">
-      <h2 class="topJumbotron__searchHeadline">
-        <i class="fa fa-search"></i>
+  <div class="container">
+    <div class="row">
+      <img class="col" src="/images/hogehoge.png">
+      <form class="form-group col" method="get" action="/search">
+        <h2 style="color: #fff">
         レビューを検索する
-      </h2>
-      <form class="topJumbotron__searchForm" method="get" action="/search">
-        <input type="hidden" name="_token" value="7W3GRTfA0r2GInDb8H5fENEAAw9Xm1HglJoUJ2A6">
-        <div class="topJumbotron__searchFieldRow">
-          <div class="topJumbotron__searchFieldCol__all">
-            <label class="topJumbotron__searchSelectLabel">
-              <select class="topJumbotron__searchFaculty" name="faculty">
-                <option value="">学部</option>
-                <optgroup label="--- 早稲田キャンパス ---">
-                  <option>政治経済学部</option>
-                  <option>法学部</option>
-                  <option>商学部</option>
-                  <option>教育学部</option>
-                  <option>社会科学部</option>
-                  <option>国際教養学部</option>
-                </optgroup>
-                <optgroup label="--- 戸山キャンパス ---">
-                  <option>文学部</option>
-                  <option>文化構想学部</option>
-                </optgroup>
-                <optgroup label="--- 西早稲田キャンパス ---">
-                  <option>基幹理工学部</option>
-                  <option>創造理工学部</option>
-                  <option>先進理工学部</option>
-                </optgroup>
-                <optgroup label="--- 所沢キャンパス ---">
-                  <option>人間科学部</option>
-                  <option>スポーツ科学部</option>
-                </optgroup>
-                <optgroup label="--- その他 ---">
-                  <option value="グローバルエデュケーションセンター">グローバルエデュケーションセンター</option>
-                </optgroup>
-              </select>
-            </label>
-          </div>
+        </h2>
+        <div class="form-group">
+          <select class="form-control" name="faculty">
+            <option value="">学部</option>
+            <optgroup label="--- 早稲田キャンパス ---">
+              <option>政治経済学部</option>
+              <option>法学部</option>
+              <option>商学部</option>
+              <option>教育学部</option>
+              <option>社会科学部</option>
+              <option>国際教養学部</option>
+            </optgroup>
+            <optgroup label="--- 戸山キャンパス ---">
+              <option>文学部</option>
+              <option>文化構想学部</option>
+            </optgroup>
+            <optgroup label="--- 西早稲田キャンパス ---">
+              <option>基幹理工学部</option>
+              <option>創造理工学部</option>
+              <option>先進理工学部</option>
+            </optgroup>
+            <optgroup label="--- 所沢キャンパス ---">
+              <option>人間科学部</option>
+              <option>スポーツ科学部</option>
+            </optgroup>
+            <optgroup label="--- その他 ---">
+              <option value="グローバルエデュケーションセンター">グローバルエデュケーションセンター</option>
+            </optgroup>
+          </select>
         </div>
-        <div class="topJumbotron__searchFieldRow">
-          <div class="topJumbotron__searchFieldCol__all">
-            <label class="topJumbotron__searchSelectLabel">
-              <select class="topJumbotron__searchTerm" name="term">
-                <option value="">学期</option>
-                <option value="春学期">春学期, 夏季集中</option>
-                <option value="秋学期">秋学期, 冬季集中</option>
-                <option value="通年">通年</option>
-              </select>
-            </label>
-          </div>
+        <div class="form-group">
+          <select class="form-control" name="term">
+            <option value="">学期</option>
+            <option value="春学期">春学期, 夏季集中</option>
+            <option value="秋学期">秋学期, 冬季集中</option>
+            <option value="通年">通年</option>
+          </select>
         </div>
-        <div class="topJumbotron__searchFieldRow">
-          <div class="topJumbotron__searchFieldCol__half">
-            <label class="topJumbotron__searchSelectLabel">
-              <select class="topJumbotron__searchDay" name="day">
-                <option value="">曜日</option>
-                <option value="月">月曜日</option>
-                <option value="火">火曜日</option>
-                <option value="水">水曜日</option>
-                <option value="木">木曜日</option>
-                <option value="金">金曜日</option>
-                <option value="土">土曜日</option>
-              </select>
-            </label>
+        <div class="form-group">
+          <select class="form-control" name="day">
+            <option value="">曜日</option>
+            <option value="月">月曜日</option>
+            <option value="火">火曜日</option>
+            <option value="水">水曜日</option>
+            <option value="木">木曜日</option>
+            <option value="金">金曜日</option>
+            <option value="土">土曜日</option>
+          </select>
           </div>
-          <div class="topJumbotron__searchFieldCol__half">
-            <label class="topJumbotron__searchSelectLabel">
-              <select class="topJumbotron__searchPeriod" name="period">
-                <option value="">時限</option>
-                <option value="1">1限</option>
-                <option value="2">2限</option>
-                <option value="3">3限</option>
-                <option value="4">4限</option>
-                <option value="5">5限</option>
-                <option value="6">6限</option>
-                <option value="7">7限</option>
-              </select>
-            </label>
+          <div class="form-group">
+            <select class="form-control" name="period">
+              <option value="">時限</option>
+              <option value="1">1限</option>
+              <option value="2">2限</option>
+              <option value="3">3限</option>
+              <option value="4">4限</option>
+              <option value="5">5限</option>
+              <option value="6">6限</option>
+              <option value="7">7限</option>
+            </select>
           </div>
-        </div>
-        <div class="topJumbotron__searchFieldRow">
-          <div class="topJumbotron__searchFieldCol__all">
-            <input class="topJumbotron__searchKeyword" name="q" type="text" placeholder="授業名, 教授名, キーワード">
+          <div class="form-group">
+              <input class="form-control" name="q" type="text" placeholder="授業名, 教授名, キーワード">
           </div>
-        </div>
-        <div class="topJumbotron__searchSubmitRow">
-          <input class="topJumbotron__searchSubmit" type="submit" value="検索">
+          <div class="form-group">
+            <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="検索">
+          </div>
         </div>
       </form>
     </div>
-  </div> %>
+  </div>
 </section>
 
 <section class="timeline" >
@@ -124,10 +105,10 @@
   <div class="flexcontainer">
     <% @comments.each do |comment| %>
       <div class="flexitem">
-        <p> Author: <%= comment.users.name %></p>
-        <p><a href="<%= comment.lessons.lesson %>">講義名</a></p>
+        <p>講義名 : <%= comment.lesson %></p>
         <p>レビュー：<%= comment.comment %></p>
         <%commented_user = User.find_by(id: comment.user_id )%>
+        <p>投稿者：<%= commented_user.name%></p>
       </div>
     <%end%>
   </div>

@@ -30,10 +30,6 @@ get '/signup' do
   erb :sign_up
 end
 
-get '/search' do
-  erb :search
-end
-
 get '/home' do
   @user_comments = Comment.where(user_id: current_user).order('updated_at DESC')
   erb :home
@@ -101,24 +97,16 @@ get '/search' do
 end
 
 post '/search' do
-  keyword = params[:keyword]
-  uri = URI("https://itunes.apple.com/search")
-  uri.query = URI.encode_www_form({term: keyword, country: "JP", media: "music", limit: 10})
-  res = Net::HTTP.get_response(uri)
-  returned_json = JSON.parse(res.body)
-  @musics = returned_json["results"]
-
+  @lessons = Lesson.find_by(lesson: params[:lesson])
   erb :search
-
 end
 
 post '/new' do
   current_user.comments.create(
-    artwork_url: params[:artwork_url],
-    artist_name: params[:artist_name],
-    collection_name:  params[:collection_name],
-    track_name: params[:track_name],
-    preview_url: params[:preview_url],
+    lesson: params[:lesson],
+    teacher: params[:teacher],
+    faculty:  params[:faculty],
+    term: params[:term],
     comment: params[:comment],
     user_id: current_user.id
   )

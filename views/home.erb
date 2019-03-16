@@ -1,21 +1,19 @@
 <section>
   <div class="container">
-    <h2><%=current_user.name%>の投稿</h2>
+    <h2><%=current_user.name%>が投稿したレビュー</h2>
       <div class="flexcontainer">
-        <% @user_comments.each do |comment|%>
+        <% @user_comments.each do |comment| %>
           <div class="flexitem">
-            <img src="<%= comment["artwork_url"] %>"><br><br>
-            <p><%= comment["artist_name"] %></p>
-            <p><%= comment["collection_name"] %></p>
-            <p><%= comment["track_name"] %></p>
-            <p><a href="<%= comment["preview_url"] %>">サンプル</a></p>
-            <p>コメント：<%= comment["comment"]%></p>
+            <p>講義名 : <%= comment.lesson %></p>
+            <p>レビュー：<%= comment.comment %></p>
+            <%commented_user = User.find_by(id: comment.user_id )%>
+            <p>投稿者：<%= commented_user.name%></p>
             <form action="/comments/<%= comment.id %>/edit" method="get">
-							<button class="btn btn-link" type="submit">編集</button>
-						</form>
+              <button class="btn btn-link" type="submit">編集</button>
+            </form>
             <form action="/comments/<%= comment.id %>/delete" method="post">
-							<button class="btn btn-link" type="submit">削除</button>
-						</form>
+              <button class="btn btn-link" type="submit">削除</button>
+            </form>
           </div>
         <%end%>
       </div>
