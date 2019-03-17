@@ -18,7 +18,7 @@
       <form action='/new' method='post'>
         <p><%= lesson["lesson"] %></p>
         <input type="hidden" name="lesson"
-        value="<%=lesson["lesson"]%>">
+        value="<%=lesson.lesson%>">
 
         <p><%= lesson["teacher"] %></p>
         <input type="hidden" name="teacher"
@@ -32,10 +32,14 @@
         <input type="hidden" name="term"
         value="<%=lesson["term"]%>">
 
-        <textarea name="テキストエリア" rows="3" cols="30" wrap="soft" style="color: black" placeholder="Comment"></textarea>
+        <input type="hidden" name="lesson_id"
+        value="<%=lesson.id%>">
+
+        <textarea name="comment" rows="3" cols="30" wrap="soft" style="color: black" placeholder="Comment"></textarea>
         <%# <input type="text" name="keyword" placeholder="Comment" /> %>
         <input type="submit" value="Post comment" />
-        </form>
+      </form>
+      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="この科目はおすすめ！" data-hashtags="SyllabusShare" data-lang="ja" data-dnt="true" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </div>
     <%end%>
   <%else%>

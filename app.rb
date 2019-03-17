@@ -104,18 +104,19 @@ end
 
 post '/search' do
   # @lessons = Lesson.find_by(lesson: params[:keyword])
-  @lessons = Lesson.all
+  @lessons = Lesson.where("lesson LIKE ?", "%#{params[:keyword]}%")
   erb :search
 end
 
 post '/new' do
   if current_user
     current_user.comments.create(
-      lesson: params[:lesson],
-      teacher: params[:teacher],
-      faculty:  params[:faculty],
-      term: params[:term],
+      # lesson: params[:lesson],
+      # teacher: params[:teacher],
+      # faculty:  params[:faculty],
+      # term: params[:term],
       comment: params[:comment],
+      lesson_id: params[:lesson_id],
       user_id: current_user.id
     )
     redirect '/home'

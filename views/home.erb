@@ -1,21 +1,21 @@
 <section>
   <div class="controls">
     <h2><%=current_user.name%>が投稿したレビュー</h2>
-      <div class="controls">
-        <% @user_comments.each do |comment| %>
-          <div class="item">
-            <p>講義名 : <%= comment.lesson %></p>
-            <p>レビュー：<%= comment.comment %></p>
-            <%commented_user = User.find_by(id: comment.user_id )%>
-            <p>投稿者：<%= commented_user.name%></p>
-            <form action="/comments/<%= comment.id %>/edit" method="get">
-              <button class="btn btn-link" type="submit">編集</button>
-            </form>
-            <form action="/comments/<%= comment.id %>/delete" method="post">
-              <button class="btn btn-link" type="submit">削除</button>
-            </form>
-          </div>
-        <%end%>
-      </div>
+    <div class="controls">
+      <% @user_comments.each do |comment| %>
+        <div class="item">
+          <p>講義名 : <%= Lesson.find_by(id: comment.lesson_id).lesson %></p>
+          <p>レビュー：<%= comment.comment %></p>
+          <%commented_user = User.find_by(id: comment.user_id )%>
+          <p>投稿者：<%= commented_user.name%></p>
+          <form action="/comments/<%= comment.id %>/edit" method="get">
+            <button class="btn btn-link" type="submit">編集</button>
+          </form>
+          <form action="/comments/<%= comment.id %>/delete" method="post">
+            <button class="btn btn-link" type="submit">削除</button>
+          </form>
+        </div>
+      <%end%>
+    </div>
   </div>
 </section>

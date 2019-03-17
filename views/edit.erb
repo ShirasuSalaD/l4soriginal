@@ -3,8 +3,8 @@
     <h2>コメントの更新</h2>
     <form action="/comments/<%=@comment.id%>/edit" method="post" >
       <div class="edit-form" style="text-align:center;">
-      <input type="text" name="updated_comment"placeholder="<%=@comment.comment%>">
-      <button class="btn btn-primary" type="submit" >更新</button>
+        <textarea name="updated_comment" rows="3" cols="30" wrap="soft" style="color: black" placeholder="<%=@comment.comment%>"></textarea>
+        <button class="btn btn-primary" type="submit" >更新</button>
       </div>
     </form>
   </div>
