@@ -1,50 +1,41 @@
-<section class="search-form">
-  <div class="container">
-    <h3>検索フォーム</h3>
-      <form class="col-6" action="/search" method='post'style="margin:0 auto;">
-        <div class="input-group mb-3">
-                <input type="text" class="form-control" name="lesson" placeholder="キーワードを入力">
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="submit">検索</button>
-                </div>
-              </div>
-      </form>
+<body>
+<div class="controls">
+    <form action="search" method="POST">
+      <h2>Search from Syllabus</h2>
+      <input type="text" name="keyword" placeholder="What are you looking for?" />
+      <input type="submit" value="Search" />
+    </form>
   </div>
-</section>
-<section class="search-result">
-  <div class="container">
-    <h3>検索結果</h3>
-      <div class="resultcontainer" id="result">
-        <% if !@lessons.nil? %>
-          <% @lessons.each do |lesson| %>
-            <div class="flexitem">
-            <form action='/new' method='post'>
-              <p><%= lesson["lesson"] %></p>
-              <input type="hidden" name="artist_name"
-              value="<%=lesson["lesson"]%>">
 
-              <p><%= lesson["teacher"] %></p>
-              <input type="hidden" name="teacher"
-              value="<%=lesson["teacher"]%>">
+  <div class="controls">
+    <h2>Result</h2>
+  </div>
 
-              <p><%= lesson["faculty"] %></p>
-              <input type="hidden" name="faculty"
-              value="<%=lesson["faculty"]%>">
+<div class="lists" id="result">
+  <% if !@lessons.nil? %>
+    <% @lessons.each do |lesson| %>
+      <div class="item">
+      <form action='/new' method='post'>
+        <p><%= lesson["lesson"] %></p>
+        <input type="hidden" name="artist_name"
+        value="<%=lesson["lesson"]%>">
 
-              <div class="input-group mb-3">
-                <input type="text" class="form-control" name="comment" placeholder="レビューコメント">
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="submit">投稿</button>
-                </div>
-              </div>
+        <p><%= lesson["teacher"] %></p>
+        <input type="hidden" name="teacher"
+        value="<%=lesson["teacher"]%>">
 
-              </form>
-            </div>
-          <%end%>
-        <%else%>
-          <p>検索結果がありません</p>
-        <%end%>
-    </div>
+        <p><%= lesson["faculty"] %></p>
+        <input type="hidden" name="faculty"
+        value="<%=lesson["faculty"]%>">
 
+        <textarea name="テキストエリア" rows="3" cols="30" wrap="soft" style="color: black" placeholder="Comment"></textarea>
+        <%# <input type="text" name="keyword" placeholder="Comment" /> %>
+        <input type="submit" value="Post comment" />
+        </form>
+      </div>
+    <%end%>
+  <%else%>
+    <p>Not Found</p>
+  <%end%>
 </div>
-</section>
+</body>

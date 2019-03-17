@@ -1,9 +1,9 @@
 <section>
-  <div class="container">
+  <div class="controls">
     <h2><%=current_user.name%>が投稿したレビュー</h2>
-      <div class="flexcontainer">
+      <div class="controls">
         <% @user_comments.each do |comment| %>
-          <div class="flexitem">
+          <div class="item">
             <p>講義名 : <%= comment.lesson %></p>
             <p>レビュー：<%= comment.comment %></p>
             <%commented_user = User.find_by(id: comment.user_id )%>

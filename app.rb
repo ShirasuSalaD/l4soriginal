@@ -54,7 +54,7 @@ post '/comments/:id/delete' do
   redirect '/home'
 end
 
-get '/logout' do
+get '/signout' do
   session[:user] = nil
   redirect '/'
 end
@@ -97,18 +97,23 @@ get '/search' do
 end
 
 post '/search' do
-  @lessons = Lesson.find_by(lesson: params[:lesson])
+  # @lessons = Lesson.find_by(lesson: params[:keyword])
+  @lessons = Lesson.all
   erb :search
 end
 
 post '/new' do
-  current_user.comments.create(
-    lesson: params[:lesson],
-    teacher: params[:teacher],
-    faculty:  params[:faculty],
-    term: params[:term],
-    comment: params[:comment],
-    user_id: current_user.id
-  )
-  redirect '/home'
+  if current_user
+    current_user.comments.create(
+      lesson: params[:lesson],
+      teacher: params[:teacher],
+      faculty:  params[:faculty],
+      term: params[:term],
+      comment: params[:comment],
+      user_id: current_user.id
+    )
+    redirect '/home'
+  else
+    redirect '/signup'
+  end
 end

@@ -1,29 +1,27 @@
-<section class="top-form">
-  <div class="container">
-    <h1 class="top-title">Syllabus Share</h1>
-    <div class="login-form">
-      <% if current_user.nil? %>
-        <form action='/signin' method="post">
-          <div class="row">
-            <div class="col">
-              <input class="form-control" type="text" id="name" name="name" placeholder="UserID">
-            </div>
-            <div class="col">
-              <input class="form-control" name="password" type ="password" placeholder ="Password">
-            </div>
-            <div class="">
-            <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Sign in</button>
-            </div>
-          </div>
-        </form>
-      <%end%>
-    </div>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Syllabus Share</title>
+</head>
+<body>
+<div class="top-form">
+  <div class="login-form">
+    <h2 class="controls top-title">Syllabus Share</h2>
+    <% if current_user.nil? %>
+    <form action='/signin' method="post">
+      <input type="text" id="name" name="name" placeholder="Username">
+      <input name="password" type="password" placeholder="Password">
+      <input type="submit" value="Sign in">
+    </form>
+    <%end%>
   </div>
   <%# トップページで検索 %>
-  <div class="container">
+  <% if !current_user.nil? %>
+  <div class="controls">
     <div class="row">
-      <img class="col" src="/images/hogehoge.png">
-      <form class="form-group col" method="get" action="/search">
+      <%# <img class="col" src="/images/hogehoge.png"> %>
+      <form class="form-group col search-form" method="get" action="/search">
         <h2 style="color: #fff">
         レビューを検索する
         </h2>
@@ -88,7 +86,7 @@
             </select>
           </div>
           <div class="form-group">
-              <input class="form-control" name="q" type="text" placeholder="授業名, 教授名, キーワード">
+              <input class="form-control" name="keyword" type="text" placeholder="授業名, 教授名, キーワード">
           </div>
           <div class="form-group">
             <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="検索">
@@ -97,14 +95,14 @@
       </form>
     </div>
   </div>
-</section>
+  <%end%>
+</div>
 
-<section class="timeline" >
-<div class="container">
+<div class="controls">
   <h2>最新のレビュー</h2>
-  <div class="flexcontainer">
+  <div class="lists">
     <% @comments.each do |comment| %>
-      <div class="flexitem">
+      <div class="item">
         <p>講義名 : <%= comment.lesson %></p>
         <p>レビュー：<%= comment.comment %></p>
         <%commented_user = User.find_by(id: comment.user_id )%>
@@ -113,4 +111,6 @@
     <%end%>
   </div>
 </div>
-</section>
+
+</body>
+</html>
