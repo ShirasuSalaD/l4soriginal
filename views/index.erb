@@ -6,24 +6,29 @@
 </head>
 <body>
 <div class="top-form">
-  <div class="login-form">
-    <h2 class="controls top-title">Syllabus Share</h2>
+  <div class="login-form controls">
+    <%# <h2 class="controls top-title">Syllabus Share</h2> %>
+    <img class='controls' src="/images/logo-white.png">
     <% if current_user.nil? %>
+    <div class='controls'>
     <form action='/signin' method="post">
       <input type="text" id="name" name="name" placeholder="Username">
       <input name="password" type="password" placeholder="Password">
       <input type="submit" value="Sign in">
     </form>
+    </div>
     <%end%>
   </div>
-  <%# トップページで検索 %>
+</div>
+
+<%# トップページで検索 %>
   <% if !current_user.nil? %>
   <div class="controls">
     <div class="row">
-      <%# <img class="col" src="/images/hogehoge.png"> %>
+      <img class="col" src="/images/logo.png">
       <form class="form-group col search-form" method="get" action="/search">
         <h2 style="color: #fff">
-        レビューを検索する
+        シラバスを検索する
         </h2>
         <div class="form-group">
           <select class="form-control" name="faculty">
@@ -87,8 +92,6 @@
           </div>
           <div class="form-group">
               <input class="form-control" name="keyword" type="text" placeholder="授業名, 教授名, キーワード">
-          </div>
-          <div class="form-group">
             <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="検索">
           </div>
         </div>
@@ -96,7 +99,6 @@
     </div>
   </div>
   <%end%>
-</div>
 
 <div class="controls">
   <h2>最新のレビュー</h2>

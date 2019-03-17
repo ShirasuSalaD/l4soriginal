@@ -10,7 +10,6 @@ require 'json'
 require 'rubygems'
 require 'sinatra/json'
 
-
 enable :sessions
 
 helpers do
@@ -23,11 +22,6 @@ end
 get '/' do
   @comments = Comment.all.order('updated_at DESC')
   erb :index
-end
-
-
-get '/signup' do
-  erb :sign_up
 end
 
 get '/home' do
@@ -59,20 +53,28 @@ get '/signout' do
   redirect '/'
 end
 
+get '/signup' do
+  erb :sign_up
+end
+
+def image_upload(icon_url)
+  logger.info "upload now"
+  tempfile = icon_url[:tempfile]
+  upload = Cloudinary::Uploader.upload(tempfile.path)
+  contents = User.last
+  contents.update_attribute(:icon_url, upload['url'])
+end
+
 post '/signup' do
-  user = User.create(
-    name: params[:name],
-    password: params[:password],
-    icon_url: "",
-    password_confirmation: params[:password_confirmation]
+  user=User.create(
+  name: params[:name],
+  password: params[:password],
+  password_confirmation: params[:password_confirmation],
+  icon_url: params[:file]
   )
 
   if params[:file]
-    tempfile = params[:file][:tempfile]
-    filename = params[:file][:filename]
-    uploadfile =  Cloudinary::Uploader.upload(tempfile.path)
-    new_user = User.last
-    new_user.update_attribute(:icon_url, uploadfile['url'])
+    image_upload(params[:file])
   end
 
 

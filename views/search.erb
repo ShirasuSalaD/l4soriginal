@@ -17,7 +17,7 @@
       <div class="item">
       <form action='/new' method='post'>
         <p><%= lesson["lesson"] %></p>
-        <input type="hidden" name="artist_name"
+        <input type="hidden" name="lesson"
         value="<%=lesson["lesson"]%>">
 
         <p><%= lesson["teacher"] %></p>
@@ -27,6 +27,10 @@
         <p><%= lesson["faculty"] %></p>
         <input type="hidden" name="faculty"
         value="<%=lesson["faculty"]%>">
+
+        <p><%= lesson["term"] %></p>
+        <input type="hidden" name="term"
+        value="<%=lesson["term"]%>">
 
         <textarea name="テキストエリア" rows="3" cols="30" wrap="soft" style="color: black" placeholder="Comment"></textarea>
         <%# <input type="text" name="keyword" placeholder="Comment" /> %>
