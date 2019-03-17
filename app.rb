@@ -83,6 +83,10 @@ post '/signup' do
   redirect '/'
 end
 
+get '/signin' do
+  erb:sign_in
+end
+
 post '/signin' do
   user = User.find_by(name: params[:name])
   if user && user.authenticate(params[:password])
