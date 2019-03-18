@@ -108,7 +108,7 @@
   <div class="lists">
     <% @comments.each do |comment| %>
       <div class="item">
-        <a style="color: #ffffff" href="/lessons/<%=comment.lesson.id%>/view">講義名 : <%= Lesson.find_by(id: comment.lesson_id).lesson %></a>
+        <a style="color: #ffffff" href="/lessons/<%=comment.lesson_id%>/view">講義名 : <%= Lesson.find_by(id: comment.lesson_id).lesson %></a>
         <p>レビュー：<%= comment.comment %></p>
         <%commented_user = User.find_by(id: comment.user_id )%>
         <p>投稿者：<%= commented_user.name%></p>

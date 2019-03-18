@@ -4,7 +4,7 @@
     </form>
       <div class="item">
       <form action='/new' method='post'>
-        <p><%= @lesson["lesson"] %></p>
+        <a style="color: #ffffff" href="/lessons/<%=@lesson.id%>/view"><%= @lesson["lesson"] %></a>
         <input type="hidden" name="lesson"
         value="<%=@lesson.lesson%>">
 
