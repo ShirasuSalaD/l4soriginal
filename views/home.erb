@@ -1,7 +1,8 @@
 <section>
   <div class="controls">
     <h2><%=current_user.name%>が投稿したレビュー</h2>
-    <div class="controls">
+  </div>
+  <div class="controls">
       <% @user_comments.each do |comment| %>
         <div class="item">
           <p>講義名 : <%= Lesson.find_by(id: comment.lesson_id).lesson %></p>
@@ -16,6 +17,5 @@
           </form>
         </div>
       <%end%>
-    </div>
   </div>
 </section>

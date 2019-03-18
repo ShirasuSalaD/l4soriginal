@@ -1,0 +1,47 @@
+<section>
+  <div class="controls">
+    <form action="/lessons/<%=@lesson.id%>/view" method="post" >
+    </form>
+      <div class="item">
+      <form action='/new' method='post'>
+        <p><%= @lesson["lesson"] %></p>
+        <input type="hidden" name="lesson"
+        value="<%=@lesson.lesson%>">
+
+        <p><%= @lesson["teacher"] %></p>
+        <input type="hidden" name="teacher"
+        value="<%=@lesson["teacher"]%>">
+
+        <p><%= @lesson["faculty"] %></p>
+        <input type="hidden" name="faculty"
+        value="<%=@lesson["faculty"]%>">
+
+        <p><%= @lesson["term"] %></p>
+        <input type="hidden" name="term"
+        value="<%=@lesson["term"]%>">
+
+        <input type="hidden" name="lesson_id"
+        value="<%=@lesson.id%>">
+
+        <textarea name="comment" rows="3" cols="30" wrap="soft" style="color: black" placeholder="Comment"></textarea>
+        <%# <input type="text" name="keyword" placeholder="Comment" /> %>
+        <input type="submit" value="Post comment" />
+      </form>
+      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="この科目はおすすめ！" data-hashtags="SyllabusShare" data-lang="ja" data-dnt="true" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+  </div>
+
+  <div class="controls">
+    <h2>この講義についたレビュー</h2>
+  </div>
+
+  <div class="controls">
+      <% if !Comment.where(lesson_id: @lesson_id).nil? %>
+        <% Comment.where(lesson_id: @lesson_id).each do |view| %>
+          <p><%= view.comment %></p>
+        <%end%>
+      <%else%>
+        <p>レビューがありません</p>
+      <%end%>
+  </div>
+</section>

@@ -1,10 +1,12 @@
 <section>
-  <div class="container">
+  <div class="controls">
     <h2>コメントの更新</h2>
+  </div>
+  <div class="controls">
     <form action="/comments/<%=@comment.id%>/edit" method="post" >
       <div class="edit-form" style="text-align:center;">
-        <textarea name="updated_comment" rows="3" cols="30" wrap="soft" style="color: black" placeholder="<%=@comment.comment%>"></textarea>
-        <button class="btn btn-primary" type="submit" >更新</button>
+        <textarea name="updated_comment" rows="3" cols="30" style="color: black" placeholder="<%=@comment.comment%>"><%=@comment.comment%></textarea>
+        <input type="submit" value="更新">
       </div>
     </form>
   </div>

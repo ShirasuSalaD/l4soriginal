@@ -41,6 +41,17 @@ post '/comments/:id/edit' do
   redirect '/home'
 end
 
+get '/lessons/:id/view' do
+  @lesson = Lesson.find(params[:id])
+  erb :view
+end
+
+post '/lessons/:id/view' do
+  lesson = Lesson.find(params[:id])
+  # comment.comment = CGI.escape_html(params[:updated_comment])
+  lesson.save
+  redirect '/home'
+end
 
 post '/comments/:id/delete' do
   comment = Comment.find(params[:id])

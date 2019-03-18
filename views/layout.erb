@@ -36,7 +36,7 @@
         <%if !current_user.icon_url=""%>
         <li><a href="/home"><img class="profile-icon" src="<%= current_user.icon_url %>"></a></li>
         <%else%>
-        <li><a href="/home"><img class="profile-icon" src="<%='../images/default.png'%>"></a></li>
+        <li><a href="/home"><img class="profile-icon" src="<%='/images/default.png'%>"></a></li>
         <%end%>
 
         <li><a href="/home">Welcome!
