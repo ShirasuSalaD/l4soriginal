@@ -18,7 +18,7 @@ gem 'dotenv', '~> 2.6'
 gem 'cloudinary', '~> 1.11', '>= 1.11.1'
 gem 'json'
 
-
+gem 'pry'
 
 group :development do
   gem 'sqlite3' , '~>1.3.6'
